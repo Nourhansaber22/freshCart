@@ -1,0 +1,37 @@
+<div class="container py-3 my-3">
+
+    <h1 class="green text-main text-center py-4 fw-bold">All Brands</h1>
+
+    <!-- <div class="bg-danger w-50 h-50 d-flex justify-content-between ">
+   <hr/>
+  <div>
+    <h3 text-main>Dell</h3>
+    <span>Dell</span>
+  </div>
+  <div>
+   <img src="../../../assets/images/blog-img-2.jpeg" class="w-50" alt="">
+  </div>
+</div> -->
+<div  class="row g-4">
+  @for (item of ctiList; track $index) {
+
+    <div _ngcontent-xmm-c10  class="col-md-3 ">
+        <div  class="card">
+           <div (click)="showalert()" class="card-img">
+           
+            <img class="img-fluid" [src]="item.image" [alt]="item.name">
+
+              </div>
+            <div  class="card-body">
+                <p  class="text-center">{{item.name}}</p>
+           </div>
+             </div>
+    </div>
+  }
+
+    </div>
+</div>
+
+
+
+

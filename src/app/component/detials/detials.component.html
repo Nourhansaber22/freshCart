@@ -1,0 +1,36 @@
+
+
+@if(datielsProduct){
+
+    <section>
+        <h1 class="text-center text-main my-3">Details Product</h1>
+        <div class="row align-items-center">
+            <div class="col-md-3">
+                <div>
+                    <img [src]="datielsProduct.imageCover" class="w-100" [alt]="datielsProduct.title">
+                </div>
+            </div>
+            <div class="col-md-9 ">
+                <h2>{{datielsProduct.title}}</h2>
+                <p class="text-muted">{{datielsProduct.description}}</p>
+                <h3>{{datielsProduct.category.name}}</h3>
+                <div class="d-flex justify-content-between align-items-center">
+
+                    <span>{{datielsProduct.price}} EGP</span>
+                    <div>
+                    @for (datielsProduct of [1,2,3,4,5].slice(0 , datielsProduct.ratingsAverage  ); track $index) {
+
+                        <span><i class="fas fa-star rating-color"></i></span>
+                    }
+                    @if(datielsProduct.ratingsAverage  %1 !==0){
+                        <i class="fa-solid fa-star-half-stroke rating-color"></i>
+                    } 
+                    <span class="text-muted">{{datielsProduct.ratingsAverage}}</span>
+                    </div>
+            </div>
+
+            <button  class="btn-main w-100">+Add to Cart</button>
+            </div>
+        </div>
+    </section>   
+}

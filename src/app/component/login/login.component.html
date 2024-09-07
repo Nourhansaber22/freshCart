@@ -1,0 +1,84 @@
+
+<section class=" py-4 my-5 rounded-4">
+    <h1 class="h2 ">login Now:</h1>
+
+    <form [formGroup]="loginform" (ngSubmit)="loginsubmit()">
+        
+        <div class="my-2">
+            <label for="email">email:</label>
+            <input  [ngClass]="
+            {
+                'is-valid':!loginform.get('email')?.errors &&loginform.get('email')?.touched,
+                'is-invalid':loginform.get('email')?.errors &&loginform.get('email')?.touched,
+
+            }" id="email" type="email" class="form-control" formControlName="email">
+
+            @if(loginform.get("email")?.errors &&(loginform.get("email")?.touched||loginform.get("email")?.dirty))
+            {
+              <div class="alert alert-danger w-50">
+                  @if(loginform.get("email")?.getError("required"))
+                  {
+                      <p class="m-0">Email Is Required .</p>
+                  }
+                  @else if (loginform.get("email")?.getError("email")) {
+                      <p class="m-0">Enter Valid Email.</p>
+                  }
+                 
+              </div>
+            }
+        </div>
+        <div class="my-2">
+            <label for="password">password:</label>
+            <input  [ngClass]="
+            {
+                'is-valid':!loginform.get('password')?.errors &&loginform.get('password')?.touched,
+                'is-invalid':loginform.get('password')?.errors &&loginform.get('password')?.touched,
+
+            }"
+             id="password" type="password" class="form-control" formControlName="password">
+
+            @if(loginform.get("password")?.errors &&loginform.get("password")?.touched)
+            {
+              <div class="alert alert-danger w-50">
+                  @if(loginform.get("password")?.getError("required"))
+                  {
+                      <p class="m-0">password Is Required .</p>
+                  }
+                  @else if (loginform.get("password")?.getError("pattern")) {
+                      <p class="m-0">Enter Valid password.</p>
+                  }
+                 
+              </div>
+            }
+        </div>
+        
+         
+       <div class="d-flex align-items-center justify-content-between gap-4">
+      <a  class=" cr col-hove  " routerLink="/forget">forgetPassword ?</a>
+         
+        <button  [disabled]="loginform.invalid || isloading" type="submit" class="btn-main ">
+            login
+           @if(isloading)
+           {
+            <span>
+                <i class="fas fa-spin fa-spinner"></i>
+            </span>
+           }
+        </button>
+       </div>
+        
+
+        @if(masErro)
+        {
+            <p class="alert alert-danger w-50 m-0">{{masErro}}</p>
+        }
+
+
+
+        @if(mesSuacces){
+            <p class="text-green">success</p>
+        }
+    </form>
+</section>
+
+

@@ -1,0 +1,36 @@
+
+
+<section class="my-5 py-5 container ">
+
+   
+    <div>
+   
+        <div class="row  g-4">
+            @for (slide of ctiList; track slide._id)
+            {
+            
+            <div  class="col-md-3 ">
+                <div  class="card">
+               <div  class="card-img">
+                <img [src]="slide.image" style="height: 300px;"   class="w-100" [alt]="slide.name">
+                  </div>
+                <div  class="card-body">
+                    <h3 class="h5 text-main text-center">{{slide.name}}</h3>
+               </div>
+                 </div>
+              </div>
+            }
+            
+        </div>
+       </div>
+  
+
+
+
+      
+    
+     
+ </section> 
+
+
+ 
